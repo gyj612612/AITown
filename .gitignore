@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+savegame.json
+.pytest_cache/
+.ruff_cache/
+build/
+dist/
+release/
+steam_build_output/
+.venv_build/
+AITown.spec
+external/

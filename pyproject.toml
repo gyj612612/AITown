@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aitown"
+version = "1.0.0"
+description = "AI Town - complete single-player simulation game"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "pygame==2.6.1",
+]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+extend-exclude = ["external", "release", "dist", "build", ".venv_build"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B"]
+ignore = ["E501"]

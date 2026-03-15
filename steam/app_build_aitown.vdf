@@ -1,0 +1,15 @@
+"AppBuild"
+{
+    "appid" "480"
+    "desc" "AITown 1.0.0 Windows build"
+    "buildoutput" "..\\steam_build_output"
+    "contentroot" "..\\release\\windows"
+    "setlive" ""
+    "preview" "0"
+    "local" ""
+
+    "depots"
+    {
+        "4801" "..\\steam\\depot_build_aitown_windows.vdf"
+    }
+}
