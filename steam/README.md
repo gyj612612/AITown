@@ -1,25 +1,34 @@
-# Steam 上传说明
+# Steam Upload Notes
 
-本目录提供 `SteamPipe` 模板文件，配合 `steamcmd` 上传构建。
+This folder contains `SteamPipe` template files for shipping a Windows build of `AITown`.
 
-## 目录约定
+## Expected Paths
 
-- 本地打包输出：`release/windows`
-- 构建脚本：`scripts/build_windows.ps1`
+- packaged Windows build output: `release/windows`
+- packaging script: `scripts/build_windows.ps1`
 
-## 使用步骤
+## Typical Workflow
 
-1. 先构建：
-   - `powershell -ExecutionPolicy Bypass -File scripts/build_windows.ps1 -Version 1.0.0 -SteamAppId <你的AppID>`
-2. 修改 `steam/app_build_aitown.vdf` 中的：
-   - `appid`
-   - `desc`
-   - `setlive`
-3. 使用 `steamcmd` 执行：
-   - `steamcmd +login <account> +run_app_build "..\\steam\\app_build_aitown.vdf" +quit`
+1. Build the Windows package:
 
-## 注意
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/build_windows.ps1 -Version 1.0.0 -SteamAppId <APP_ID>
+```
 
-- `steam_appid.txt` 仅用于本地测试，正式包可去掉。
-- 提交前先执行 `python scripts/release_check.py`。
-- 构建脚本默认走隔离Python 3.11环境，避免打包体积异常膨胀。
+2. Edit `steam/app_build_aitown.vdf` and update:
+
+- `appid`
+- `desc`
+- `setlive`
+
+3. Upload with `steamcmd`:
+
+```bash
+steamcmd +login <account> +run_app_build "..\\steam\\app_build_aitown.vdf" +quit
+```
+
+## Notes
+
+- `steam_appid.txt` is only for local testing and is not required for a final release package.
+- Run `python scripts/release_check.py` before publishing a build.
+- The build script uses an isolated Python 3.11 environment to avoid packaging unnecessary local dependencies.
